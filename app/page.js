@@ -24,7 +24,7 @@ export default function EventoLanding() {
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.15),transparent_40%)]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-10">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-10">
         {/* HEADER */}
         <div className="flex justify-between items-center border border-white/10 rounded-3xl px-6 py-4 backdrop-blur-md bg-white/5">
           <h1 className="text-2xl font-black tracking-[0.25em]">
@@ -41,7 +41,7 @@ export default function EventoLanding() {
         </div>
 
         {/* HERO */}
-        <div className="grid lg:grid-cols-2 gap-10 items-center mt-12">
+        <div className="flex justify-center items-center text-center mt-24">
           <div>
             <p className="uppercase tracking-[0.4em] text-white/50 text-sm mb-4">
               Evento exclusivo
@@ -68,32 +68,10 @@ export default function EventoLanding() {
               CONSEGUIR ENTRADAS
             </a>
           </div>
-
-          <div className="relative h-[600px] rounded-[40px] overflow-hidden border border-white/10 bg-zinc-900">
-            <img
-              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop"
-              alt="Evento"
-              className="w-full h-full object-cover opacity-80"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-            <div className="absolute bottom-0 left-0 p-8">
-              <p className="text-white/60 uppercase tracking-[0.3em] text-sm">
-                Disponible ahora
-              </p>
-
-              <h3 className="text-4xl font-black mt-2">
-                TICKETS
-                <br />
-                CONFIAR
-              </h3>
-            </div>
-          </div>
         </div>
 
         {/* TICKETS */}
-        <section id="tickets" className="mt-24">
+        <section id="tickets" className="mt-32">
           <div className="flex items-end justify-between gap-6 flex-wrap mb-10">
             <div>
               <p className="uppercase tracking-[0.3em] text-white/40 text-sm mb-2">
