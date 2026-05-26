@@ -6,166 +6,200 @@ export default function EventoLanding() {
   const whatsappLink =
     "https://wa.me/5491112345678?text=Hola!%20Quiero%20comprar%20entradas";
 
+  const mapsLink =
+    "https://www.google.com/maps/place/Miguel+David+%26+General+Gervasio+Artigas,+E3106+Paran%C3%A1,+Entre+R%C3%ADos/@-31.7682354,-60.5116708,15z/data=!4m6!3m5!1s0x95b44dc9f8f7305f:0x78cec69eabe7a5fd!8m2!3d-31.7682621!4d-60.5116586!16s%2Fg%2F11f2zlkklh?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D";
+
+  const targetDate = new Date("2026-06-13T23:59:59");
+
   const [timeLeft, setTimeLeft] = useState({
-    dias: 0,
-    horas: 0,
-    minutos: 0,
-    segundos: 0,
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
 
   useEffect(() => {
-    const targetDate = new Date("2026-06-13T23:59:59");
-
     const interval = setInterval(() => {
       const now = new Date();
       const difference = targetDate - now;
 
-      const dias = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const horas = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      if (difference <= 0) return;
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
       );
-      const minutos = Math.floor(
-        (difference % (1000 * 60 * 60)) / (1000 * 60)
+      const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
       );
-      const segundos = Math.floor((difference % (1000 * 60)) / 1000);
+      const seconds = Math.floor((difference / 1000) % 60);
 
       setTimeLeft({
-        dias,
-        horas,
-        minutos,
-        segundos,
+        days: String(days).padStart(2, "0"),
+        hours: String(hours).padStart(2, "0"),
+        minutes: String(minutes).padStart(2, "0"),
+        seconds: String(seconds).padStart(2, "0"),
       });
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
+  const lotes = [
+    {
+      nombre: "Ticket confiar",
+      precio: "$7.000",
+      descripcion:
+        "Para los que creen desde el primer momento",
+      activo: true,
+    },
+    {
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      activo: false,
+    },
+    {
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      activo: false,
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* CRONOMETRO */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 py-4 text-center">
-          <p className="text-xs md:text-sm tracking-[0.35em] text-white/80">
-            {timeLeft.dias}D · {timeLeft.horas}H ·{" "}
-            {timeLeft.minutos}M · {timeLeft.segundos}S
-          </p>
+    <div className="bg-black text-white min-h-screen overflow-hidden">
+      <div className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
+        <div className="flex justify-center items-center gap-3 py-4 text-sm tracking-[0.4em] text-white/80">
+          <span>{timeLeft.days}D</span>
+          <span>·</span>
+          <span>{timeLeft.hours}H</span>
+          <span>·</span>
+          <span>{timeLeft.minutes}M</span>
+          <span>·</span>
+          <span>{timeLeft.seconds}S</span>
         </div>
       </div>
 
-      {/* HERO */}
-      <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 text-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_45%)]"></div>
+      <section className="relative flex flex-col items-center justify-center min-h-screen px-5 pt-28 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_40%)]" />
 
-        <div className="relative z-10 w-full max-w-5xl">
-          <p className="text-[10px] md:text-xs tracking-[0.5em] text-white/40 mb-8">
-            EVENTO EXCLUSIVO
-          </p>
-
-          <h1 className="font-black uppercase leading-[0.85] tracking-tight text-[4rem] sm:text-[6rem] md:text-[9rem]">
-            “NO ES
-          </h1>
-
-          <h1 className="font-black uppercase leading-[0.85] tracking-tight text-[4rem] sm:text-[6rem] md:text-[9rem]">
-            PARA
-          </h1>
-
-          <h1 className="font-black uppercase leading-[0.85] tracking-tight text-[4rem] sm:text-[6rem] md:text-[9rem] mb-10">
-            CUALQUIERA”
-          </h1>
-
-          <div className="space-y-5 mb-10">
-            <p className="text-white/60 text-sm md:text-base tracking-[0.2em]">
-              13 · 06 · 26
-            </p>
-
-            <a
-              href="https://www.google.com/maps/@-31.7682354,-60.5116708,3a,75y,53.7h,77.93t/data=!3m7!1e1!3m5!1sk83TvpQKshvOBey3Xd5R8A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D12.072659756067551%26panoid%3Dk83TvpQKshvOBey3Xd5R8A%26yaw%3D53.70036771683107!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              className="inline-block text-white/60 hover:text-white transition-all underline underline-offset-4 text-sm md:text-base"
-            >
-              VER UBICACIÓN
-            </a>
-
-            <p className="text-white/40 text-sm md:text-base">
-              Capacidad limitada
-            </p>
-          </div>
-
-          <a
-            href={whatsappLink}
-            target="_blank"
-            className="inline-flex items-center justify-center bg-white text-black px-8 md:px-10 py-4 rounded-full font-bold tracking-wide hover:scale-105 transition-all duration-300"
-          >
-            CONSEGUIR ENTRADAS
-          </a>
-        </div>
-      </section>
-
-      {/* TICKETS */}
-      <section className="max-w-6xl mx-auto px-5 pb-24">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
-          <h2 className="text-3xl md:text-4xl font-black">
-            Elegí tu ticket
-          </h2>
-
-          <p className="text-white/50 text-sm">
-            Tocá tu ticket para comprar directamente por WhatsApp.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-5">
-          {/* TICKET */}
-          <a
-            href={whatsappLink}
-            target="_blank"
-            className="group border border-white/10 rounded-[32px] p-7 bg-white/[0.03] backdrop-blur-xl hover:border-white/40 hover:bg-white/[0.06] transition-all duration-300"
-          >
-            <p className="text-[10px] tracking-[0.35em] text-white/40 mb-5">
-              DISPONIBLE AHORA
-            </p>
-
-            <h3 className="text-4xl font-black leading-none mb-5">
-              TICKET
-              <br />
-              CONFIAR
-            </h3>
-
-            <p className="text-5xl font-black mb-7">
-              $7.000
-            </p>
-
-            <p className="text-white/60 leading-relaxed">
-              Para los que creen desde el primer momento.
-            </p>
-
-            <div className="mt-10">
-              <span className="text-sm tracking-[0.3em] text-white/70">
-                COMPRAR
-              </span>
-            </div>
-          </a>
-
-          {/* PROXIMAMENTE */}
-          <div className="border border-white/5 rounded-[32px] p-7 bg-white/[0.02] backdrop-blur-xl opacity-40 min-h-[320px] flex items-center justify-center">
-            <p className="tracking-[0.3em] text-white/25 text-sm">
-              PRÓXIMAMENTE
-            </p>
-          </div>
-
-          {/* PROXIMAMENTE */}
-          <div className="border border-white/5 rounded-[32px] p-7 bg-white/[0.02] backdrop-blur-xl opacity-40 min-h-[320px] flex items-center justify-center">
-            <p className="tracking-[0.3em] text-white/25 text-sm">
-              PRÓXIMAMENTE
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-white/10 py-8 px-6 text-center">
-        <p className="text-white/30 text-xs tracking-[0.25em]">
-          LA5TA SABADOS
+        <p className="tracking-[0.6em] text-white/40 text-[10px] sm:text-xs mb-10">
+          EVENTO EXCLUSIVO
         </p>
+
+        <h1 className="font-black uppercase leading-[0.88] tracking-tight text-[2.8rem] sm:text-[5.5rem] md:text-[9rem]">
+          “NO ES
+          <br />
+          PARA
+          <br />
+          CUALQUIERA”
+        </h1>
+
+        <div className="mt-10 space-y-4">
+          <p className="text-white/60 tracking-[0.3em] text-sm">
+            13 · 06 · 26
+          </p>
+
+          <a
+            href={mapsLink}
+            target="_blank"
+            className="text-white/80 underline text-lg hover:text-white transition"
+          >
+            VER UBICACIÓN
+          </a>
+
+          <p className="text-white/50 text-lg">
+            Capacidad limitada
+          </p>
+        </div>
+
+        <a
+          href={whatsappLink}
+          target="_blank"
+          className="mt-14 bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform"
+        >
+          CONSEGUIR ENTRADAS
+        </a>
+      </section>
+
+      <section className="px-5 pb-24 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div>
+            <p className="text-white/40 uppercase tracking-[0.4em] text-xs mb-2">
+              Entradas
+            </p>
+
+            <h2 className="text-3xl md:text-5xl font-black">
+              Elegí tu ticket
+            </h2>
+          </div>
+
+          <p className="text-white/50 text-sm md:text-base max-w-md">
+            Tocá tu ticket para comprar directamente por
+            WhatsApp.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {lotes.map((lote, index) => (
+            <a
+              key={index}
+              href={lote.activo ? whatsappLink : "#"}
+              className={`rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-300 ${
+                lote.activo
+                  ? "border-white/20 bg-white/[0.04] hover:bg-white/[0.07] hover:-translate-y-2"
+                  : "border-white/5 bg-white/[0.02] opacity-40"
+              }`}
+            >
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between">
+                  <p className="text-white/40 uppercase tracking-[0.3em] text-xs">
+                    {lote.activo
+                      ? `Ticket 0${index + 1}`
+                      : ""}
+                  </p>
+
+                  {lote.activo && (
+                    <span className="text-[10px] border border-white/20 rounded-full px-3 py-1 text-white/60">
+                      DISPONIBLE
+                    </span>
+                  )}
+                </div>
+
+                <div className="mt-10">
+                  <h3 className="text-3xl font-bold">
+                    {lote.nombre}
+                  </h3>
+
+                  <p className="text-5xl font-black mt-5">
+                    {lote.precio}
+                  </p>
+
+                  <p className="text-white/50 mt-5 leading-relaxed">
+                    {lote.descripcion}
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-12">
+                  {lote.activo ? (
+                    <div className="w-full rounded-full bg-white text-black py-4 text-center font-bold">
+                      Comprar entrada
+                    </div>
+                  ) : (
+                    <div className="w-full rounded-full border border-white/10 py-4 text-center text-white/20">
+                      Próximamente
+                    </div>
+                  )}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 py-8 text-center text-white/30 text-sm">
+        © LA5TA SABADOS — Todos los derechos reservados
       </footer>
     </div>
   );
