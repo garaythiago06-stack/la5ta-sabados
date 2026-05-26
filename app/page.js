@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function EventoLanding() {
-  const whatsappLink =
-    "https://w.app/25sbil";
+  const whatsappLink = "https://w.app/25sbil";
 
   const mapsLink =
     "https://www.google.com/maps/place/Miguel+David+%26+General+Gervasio+Artigas,+E3106+Paran%C3%A1,+Entre+R%C3%ADos/@-31.7682354,-60.5116708,15z/data=!4m6!3m5!1s0x95b44dc9f8f7305f:0x78cec69eabe7a5fd!8m2!3d-31.7682621!4d-60.5116586!16s%2Fg%2F11f2zlkklh?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D";
@@ -64,7 +63,7 @@ export default function EventoLanding() {
 
   return (
     <div className="bg-black text-white min-h-screen overflow-hidden">
-      {/* HEADER TIMER */}
+      {/* TIMER */}
       <div className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
         <div className="flex justify-center items-center gap-3 py-4 text-sm tracking-[0.4em] text-white/80">
           <span>{timeLeft.days}D</span>
@@ -81,11 +80,11 @@ export default function EventoLanding() {
       <section className="relative flex flex-col items-center justify-center min-h-screen px-5 pt-28 text-center border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_40%)]" />
 
-        <p className="tracking-[0.6em] text-white/40 text-[10px] sm:text-xs mb-10">
+        <p className="tracking-[0.6em] text-white/40 text-[10px] sm:text-xs mb-10 z-10">
           EVENTO EXCLUSIVO
         </p>
 
-        <h1 className="font-black uppercase leading-[0.88] tracking-tight text-[3.3rem] sm:text-[5.5rem] md:text-[9rem]">
+        <h1 className="font-black uppercase leading-[0.88] tracking-tight text-[3.3rem] sm:text-[5.5rem] md:text-[9rem] z-10">
           “NO ES
           <br />
           PARA
@@ -93,7 +92,7 @@ export default function EventoLanding() {
           CUALQUIERA”
         </h1>
 
-        <div className="mt-10 flex flex-col items-center gap-4">
+        <div className="mt-10 flex flex-col items-center gap-4 z-10">
           <p className="text-white/60 tracking-[0.3em] text-sm">
             13 · 06 · 26
           </p>
@@ -102,19 +101,23 @@ export default function EventoLanding() {
             Capacidad limitada
           </p>
 
+          {/* BOTON UBICACION */}
           <a
             href={mapsLink}
             target="_blank"
+            rel="noopener noreferrer"
             className="border border-white/40 rounded-full px-8 py-3 text-sm tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-300"
           >
             VER UBICACIÓN
           </a>
         </div>
 
+        {/* BOTON ENTRADAS */}
         <a
           href={whatsappLink}
           target="_blank"
-          className="mt-12 bg-white text-black px-10 py-5 rounded-full font-black text-lg tracking-wide hover:scale-105 transition-transform"
+          rel="noopener noreferrer"
+          className="mt-12 bg-white text-black px-10 py-5 rounded-full font-black text-lg tracking-wide hover:scale-105 transition-transform z-10"
         >
           CONSEGUIR ENTRADAS
         </a>
@@ -132,8 +135,7 @@ export default function EventoLanding() {
           </h2>
 
           <p className="text-white/50 text-lg max-w-xl">
-            Tocá tu ticket para comprar directamente por
-            WhatsApp.
+            Tocá tu ticket para comprar directamente por WhatsApp.
           </p>
         </div>
 
@@ -142,6 +144,8 @@ export default function EventoLanding() {
             <a
               key={index}
               href={lote.activo ? whatsappLink : "#"}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`rounded-[2.5rem] border p-8 min-h-[520px] backdrop-blur-xl transition-all duration-300 flex flex-col justify-between ${
                 lote.activo
                   ? "border-white/15 bg-white/[0.02] hover:bg-white/[0.05] hover:-translate-y-2"
