@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function EventoLanding() {
   const whatsappLink =
-    "https://wa.me/5491112345678?text=Hola!%20Quiero%20comprar%20entradas";
+    "https://w.app/25sbil";
 
   const mapsLink =
     "https://www.google.com/maps/place/Miguel+David+%26+General+Gervasio+Artigas,+E3106+Paran%C3%A1,+Entre+R%C3%ADos/@-31.7682354,-60.5116708,15z/data=!4m6!3m5!1s0x95b44dc9f8f7305f:0x78cec69eabe7a5fd!8m2!3d-31.7682621!4d-60.5116586!16s%2Fg%2F11f2zlkklh?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D";
@@ -47,28 +47,24 @@ export default function EventoLanding() {
 
   const lotes = [
     {
-      nombre: "Ticket confiar",
+      nombre: "TICKET\nCONFIAR",
       precio: "$7.000",
       descripcion:
-        "Para los que creen desde el primer momento",
+        "Para los que creen desde el primer momento.",
+      lugares: "100 lugares disponibles",
       activo: true,
     },
     {
-      nombre: "",
-      precio: "",
-      descripcion: "",
       activo: false,
     },
     {
-      nombre: "",
-      precio: "",
-      descripcion: "",
       activo: false,
     },
   ];
 
   return (
     <div className="bg-black text-white min-h-screen overflow-hidden">
+      {/* HEADER TIMER */}
       <div className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-white/10">
         <div className="flex justify-center items-center gap-3 py-4 text-sm tracking-[0.4em] text-white/80">
           <span>{timeLeft.days}D</span>
@@ -81,14 +77,15 @@ export default function EventoLanding() {
         </div>
       </div>
 
-      <section className="relative flex flex-col items-center justify-center min-h-screen px-5 pt-28 text-center">
+      {/* HERO */}
+      <section className="relative flex flex-col items-center justify-center min-h-screen px-5 pt-28 text-center border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_40%)]" />
 
         <p className="tracking-[0.6em] text-white/40 text-[10px] sm:text-xs mb-10">
           EVENTO EXCLUSIVO
         </p>
 
-        <h1 className="font-black uppercase leading-[0.88] tracking-tight text-[2.8rem] sm:text-[5.5rem] md:text-[9rem]">
+        <h1 className="font-black uppercase leading-[0.88] tracking-tight text-[3.3rem] sm:text-[5.5rem] md:text-[9rem]">
           “NO ES
           <br />
           PARA
@@ -96,46 +93,45 @@ export default function EventoLanding() {
           CUALQUIERA”
         </h1>
 
-        <div className="mt-10 space-y-4">
+        <div className="mt-10 flex flex-col items-center gap-4">
           <p className="text-white/60 tracking-[0.3em] text-sm">
             13 · 06 · 26
+          </p>
+
+          <p className="text-white/50 text-lg">
+            Capacidad limitada
           </p>
 
           <a
             href={mapsLink}
             target="_blank"
-            className="text-white/80 underline text-lg hover:text-white transition"
+            className="border border-white/40 rounded-full px-8 py-3 text-sm tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-300"
           >
             VER UBICACIÓN
           </a>
-
-          <p className="text-white/50 text-lg">
-            Capacidad limitada
-          </p>
         </div>
 
         <a
           href={whatsappLink}
           target="_blank"
-          className="mt-14 bg-white text-black px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform"
+          className="mt-12 bg-white text-black px-10 py-5 rounded-full font-black text-lg tracking-wide hover:scale-105 transition-transform"
         >
           CONSEGUIR ENTRADAS
         </a>
       </section>
 
-      <section className="px-5 pb-24 max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-          <div>
-            <p className="text-white/40 uppercase tracking-[0.4em] text-xs mb-2">
-              Entradas
-            </p>
+      {/* TICKETS */}
+      <section className="px-5 py-20 max-w-7xl mx-auto">
+        <div className="mb-12">
+          <p className="text-white/40 uppercase tracking-[0.4em] text-xs mb-4">
+            500 LUGARES DISPONIBLES
+          </p>
 
-            <h2 className="text-3xl md:text-5xl font-black">
-              Elegí tu ticket
-            </h2>
-          </div>
+          <h2 className="text-5xl md:text-6xl font-black mb-5">
+            Elegí tu ticket
+          </h2>
 
-          <p className="text-white/50 text-sm md:text-base max-w-md">
+          <p className="text-white/50 text-lg max-w-xl">
             Tocá tu ticket para comprar directamente por
             WhatsApp.
           </p>
@@ -146,60 +142,65 @@ export default function EventoLanding() {
             <a
               key={index}
               href={lote.activo ? whatsappLink : "#"}
-              className={`rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-300 ${
+              className={`rounded-[2.5rem] border p-8 min-h-[520px] backdrop-blur-xl transition-all duration-300 flex flex-col justify-between ${
                 lote.activo
-                  ? "border-white/20 bg-white/[0.04] hover:bg-white/[0.07] hover:-translate-y-2"
-                  : "border-white/5 bg-white/[0.02] opacity-40"
+                  ? "border-white/15 bg-white/[0.02] hover:bg-white/[0.05] hover:-translate-y-2"
+                  : "border-white/10 bg-white/[0.01]"
               }`}
             >
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between">
-                  <p className="text-white/40 uppercase tracking-[0.3em] text-xs">
-                    {lote.activo
-                      ? `Ticket 0${index + 1}`
-                      : ""}
-                  </p>
+              {lote.activo ? (
+                <>
+                  <div>
+                    <p className="text-white/40 uppercase tracking-[0.35em] text-xs mb-8">
+                      DISPONIBLE AHORA
+                    </p>
 
-                  {lote.activo && (
-                    <span className="text-[10px] border border-white/20 rounded-full px-3 py-1 text-white/60">
-                      DISPONIBLE
-                    </span>
-                  )}
-                </div>
+                    <h3 className="text-5xl font-black leading-[0.9] whitespace-pre-line">
+                      {lote.nombre}
+                    </h3>
 
-                <div className="mt-10">
-                  <h3 className="text-3xl font-bold">
-                    {lote.nombre}
-                  </h3>
+                    <div className="flex items-end gap-2 mt-10">
+                      <p className="text-6xl font-black">
+                        {lote.precio}
+                      </p>
 
-                  <p className="text-5xl font-black mt-5">
-                    {lote.precio}
-                  </p>
-
-                  <p className="text-white/50 mt-5 leading-relaxed">
-                    {lote.descripcion}
-                  </p>
-                </div>
-
-                <div className="mt-auto pt-12">
-                  {lote.activo ? (
-                    <div className="w-full rounded-full bg-white text-black py-4 text-center font-bold">
-                      Comprar entrada
+                      <span className="text-2xl font-semibold text-white/80 mb-2">
+                        c/u
+                      </span>
                     </div>
-                  ) : (
-                    <div className="w-full rounded-full border border-white/10 py-4 text-center text-white/20">
-                      Próximamente
+
+                    <p className="text-white/60 mt-8 text-xl leading-relaxed">
+                      {lote.descripcion}
+                    </p>
+
+                    <div className="w-full h-[1px] bg-white/20 my-8" />
+
+                    <p className="text-white/70 text-lg">
+                      {lote.lugares}
+                    </p>
+                  </div>
+
+                  <div className="pt-10">
+                    <div className="tracking-[0.3em] text-xl font-semibold">
+                      COMPRAR
                     </div>
-                  )}
+                  </div>
+                </>
+              ) : (
+                <div className="h-full flex items-center justify-center">
+                  <p className="text-white/30 tracking-[0.35em] text-2xl">
+                    PRÓXIMAMENTE
+                  </p>
                 </div>
-              </div>
+              )}
             </a>
           ))}
         </div>
       </section>
 
-      <footer className="border-t border-white/10 py-8 text-center text-white/30 text-sm">
-        © LA5TA SABADOS — Todos los derechos reservados
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 py-8 text-center text-white/30 text-sm tracking-[0.3em]">
+        LA5TA SABADOS
       </footer>
     </div>
   );
