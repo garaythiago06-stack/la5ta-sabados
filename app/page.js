@@ -1,6 +1,3 @@
-# Reemplazá TODO el contenido de `app/page.js` por este código
-
-```javascript
 "use client";
 
 import { useEffect, useState } from "react";
@@ -33,14 +30,10 @@ export default function EventoLanding() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* BACKGROUND */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_35%)]" />
 
       <div className="absolute top-[-300px] left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-white/10 blur-[220px] rounded-full" />
 
-      <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
-      {/* CONTENT */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-8">
         {/* HEADER */}
         <div className="flex justify-between items-center border border-white/10 rounded-3xl px-6 py-4 backdrop-blur-xl bg-white/[0.03]">
